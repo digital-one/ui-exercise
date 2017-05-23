@@ -1,0 +1,10 @@
+@mixin reset-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+@mixin font-size($font-size) {
+    font-size: $font-size;
+    font-size: ($font-size / $base-font-size)*1rem;
+}

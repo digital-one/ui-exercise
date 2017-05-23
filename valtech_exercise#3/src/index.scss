@@ -1,0 +1,163 @@
+@import './variables';
+@import './mixins';
+html * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: $grey;
+}
+
+.container {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.main {
+    flex: 0 1 70%;
+    display: inline-block;
+}
+
+.sidebar {
+    position: absolute;
+    width: 100%;
+    background-color: $white;
+    opacity: 0;
+    top: 120px;
+    left: 100%;
+    transition: all 0.3s ease-in-out;
+    &__inner {
+        display: flex;
+        justify-content: center;
+        padding: 30px 0;
+        height: 100%;
+        align-items: center;
+    }
+    &__menu {
+        @include font-size(20px);
+    }
+    &[data-active] {
+        left: 0;
+        opacity: 0.9;
+    }
+}
+
+.header,
+.footer {
+    flex: 1 1 100%;
+    padding: 0 30px;
+}
+
+.footer {
+    border-top: 1px solid #ccc;
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    height: 120px;
+    &__logo {
+        @include font-size(40px);
+        font-weight: 300;
+        letter-spacing: -3px;
+        color: $grey;
+    }
+    &__logo-link {
+        color: $grey;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+        &:hover,
+        &:active {
+            color: $dark-grey;
+        }
+    }
+}
+
+.grid-list {
+    @include reset-list;
+    display: flex;
+    flex-wrap: wrap;
+    &__item {
+        flex: 1 1 33.33%;
+        display: flex;
+    }
+}
+
+.article-link {
+    display: flex;
+    &__pic {
+        display: block;
+        overflow: hidden;
+        background-color: white;
+    }
+    &__src {
+        width: 100%;
+        height: auto;
+        transform-origin: 50% 50%;
+        transition: transform 0.3s ease-in-out;
+        display: block;
+    }
+    &__heading {
+        font-family: 'Merriweather', serif;
+        @include font-size(22px);
+        color: $dark-grey;
+        margin: 15px 0;
+        font-weight: 300;
+    }
+    &__text {
+        color: $grey;
+        line-height: 1.4;
+        &:last-child {
+            margin: 0;
+        }
+    }
+    &__anchor {
+        text-decoration: none;
+        cursor: pointer;
+        flex: 1;
+        margin: 0 15px 30px;
+        background-color: white;
+        &:hover {
+            .article-link__src {
+                transform: scale(1.05);
+            }
+            .article-link__heading {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.primary-nav {
+    &__list {
+        display: flex;
+        @include reset-list;
+    }
+    &__item {
+        flex: 1;
+        display: inline-block;
+        padding: 0 0 0 30px;
+    }
+    &__link {
+        color: $grey;
+        text-decoration: none;
+        @include font-size(18px);
+        transition: color 0.2s ease-in-out;
+        padding: 10px 0;
+        border-bottom: 2px solid transparent;
+        &[aria-selected],
+        &[data-selected] {
+            color: $dark-grey;
+        }
+        &[aria-selected='true'] {
+            border-color: $dark-grey;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+html * {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main,
+.sidebar {
+    border: 1px solid red;
+}
+
+.main {
+    flex: 0 1 70%;
+}
+
+.sidebar {
+    flex: 0 1 30%;
+}
+
+.header,
+.footer {
+    flex: 1 1 100%;
+    border: 1px solid black;
+}
